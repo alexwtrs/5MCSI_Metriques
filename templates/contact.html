@@ -7,73 +7,114 @@
     <style>
       /* Style général */
       body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f9;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to right, #ece9e6, #ffffff);
         margin: 0;
         padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        color: #333;
       }
 
-      /* Container du formulaire */
+      /* Conteneur principal du formulaire */
       .contact-container {
-        background: linear-gradient(135deg, #6b73ff, #000dff);
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        width: 400px;
+        background-color: white;
         padding: 40px;
-        color: white;
-        text-align: center;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        animation: fadeIn 1s ease-in-out;
       }
 
       /* Titre */
       .contact-container h1 {
-        margin-bottom: 20px;
-        font-size: 26px;
-        letter-spacing: 1.5px;
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 30px;
+        font-weight: 600;
+        color: #4a4a4a;
       }
 
-      /* Input fields */
+      /* Style des champs input et textarea */
       .contact-container input, .contact-container textarea {
         width: 100%;
         padding: 15px;
         margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
         font-size: 16px;
+        transition: border-color 0.3s;
       }
 
-      /* Textarea spécifique */
+      /* Effet focus sur les inputs */
+      .contact-container input:focus, .contact-container textarea:focus {
+        border-color: #6c63ff;
+        outline: none;
+        background-color: #fff;
+      }
+
+      /* Champ de texte personnalisé */
       .contact-container textarea {
-        height: 150px;
+        height: 180px;
         resize: none;
       }
 
       /* Bouton envoyer */
       .contact-container button {
-        background-color: #ff7979;
+        width: 100%;
+        background-color: #6c63ff;
         border: none;
         padding: 15px;
-        width: 100%;
-        border-radius: 5px;
         color: white;
+        border-radius: 8px;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
+        margin-top: 20px;
         transition: background-color 0.3s ease;
       }
 
       .contact-container button:hover {
-        background-color: #ff4747;
+        background-color: #584df6;
       }
 
-      /* Placeholder styles */
+      /* Style des placeholders */
       ::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: #aaa;
+      }
+
+      /* Animation pour un effet d'apparition */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .contact-container {
+          padding: 30px;
+        }
+        .contact-container h1 {
+          font-size: 24px;
+        }
       }
     </style>
   </head>
@@ -81,11 +122,14 @@
     <div class="contact-container">
       <h1>Contactez-nous</h1>
       <form action="/submit-contact" method="POST">
-        <input type="text" name="prenom" placeholder="Votre prénom" required>
-        <input type="text" name="nom" placeholder="Votre nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+        <input type="text" name="nom" placeholder="Nom" required>
         <textarea name="message" placeholder="Votre message" required></textarea>
         <button type="submit">Envoyer</button>
       </form>
+      <footer>
+        &copy; 2024 - Votre Entreprise. Tous droits réservés.
+      </footer>
     </div>
   </body>
 </html>
