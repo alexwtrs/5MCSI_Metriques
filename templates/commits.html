@@ -1,38 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graphique des Commits</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #e8f0fe;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 30px;
+      }
+      #chart_div {
+        width: 90%;
+        max-width: 900px;
+        height: 500px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    </style>
   </head>
   <body>
-    <h2>Nombre de Commits par minute</h2>
+    <h2>Nombre de Commits par Minute</h2>
     <div id="chart_div"></div>
-    <script>
-      google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(drawChart);
-      
-      function drawChart() {
-        fetch('/commits-data/')
-          .then(response => response.json())
-          .then(data => {
-            var dataTable = new google.visualization.DataTable();
-            dataTable.addColumn('string', 'Minute');
-            dataTable.addColumn('number', 'Nombre de Commits');
-            
-            data.results.forEach(entry => {
-              dataTable.addRow([entry.minute, entry.count]);
-            });
 
-            var options = {
-              title: 'Nombre de Commits par minute ',
-              legend: { position: 'none' }
-            };
-
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart.draw(dataTable, options);
-          })
-          .catch(error => console.error('Error fetching data:', error));
-      }
-    </script>
-  </body>
-</html>
+    <
