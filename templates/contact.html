@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous</title>
+    <style>
+      /* Style général */
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Container du formulaire */
+      .contact-container {
+        background: linear-gradient(135deg, #6b73ff, #000dff);
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        padding: 40px;
+        color: white;
+        text-align: center;
+      }
+
+      /* Titre */
+      .contact-container h1 {
+        margin-bottom: 20px;
+        font-size: 26px;
+        letter-spacing: 1.5px;
+      }
+
+      /* Input fields */
+      .contact-container input, .contact-container textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 16px;
+      }
+
+      /* Textarea spécifique */
+      .contact-container textarea {
+        height: 150px;
+        resize: none;
+      }
+
+      /* Bouton envoyer */
+      .contact-container button {
+        background-color: #ff7979;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-container button:hover {
+        background-color: #ff4747;
+      }
+
+      /* Placeholder styles */
+      ::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contact-container">
+      <h1>Contactez-nous</h1>
+      <form action="/submit-contact" method="POST">
+        <input type="text" name="prenom" placeholder="Votre prénom" required>
+        <input type="text" name="nom" placeholder="Votre nom" required>
+        <textarea name="message" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </body>
+</html>
