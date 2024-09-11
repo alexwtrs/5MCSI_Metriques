@@ -3,17 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graphique à colonne</title>
+    <title>Graphique des Températures</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chart-container {
+            width: 90%;
+            max-width: 1200px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 
-<canvas id="temperatureChart" width="400" height="200"></canvas>
+<div id="chart-container">
+    <h2 style="text-align:center; color:#333;">Températures Hourly Graphique</h2>
+    <canvas id="temperatureChart" width="400" height="200"></canvas>
+</div>
 
 <script>
     // Données fournies
     const data = {
-        "results":[
+        "results": [
             {"Jour":1485799200,"temp":10.61},
             {"Jour":1485810000,"temp":9.41},
             {"Jour":1485820800,"temp":9.15},
@@ -79,15 +106,64 @@
             datasets: [{
                 label: 'Température (°C)',
                 data: temperatures,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                backgroundColor: 'rgba(75, 192, 192, 0.4)',
                 borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(75, 192, 192, 0.6)',
+                hoverBorderColor: 'rgba(75, 192, 192, 1)',
+                barPercentage: 0.8,
+                categoryPercentage: 0.8
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Heure',
+                        color: '#333',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
                 y: {
-                    beginAtZero: false
+                    beginAtZero: true,
+                    grid: {
+                        borderColor: '#ddd'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Température (°C)',
+                        color: '#333',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#333',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.raw}°C`;
+                        }
+                    }
                 }
             }
         }
