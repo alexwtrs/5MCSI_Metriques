@@ -15,7 +15,7 @@ def hello_world():
 def MaPremiereAPI():
     return "<h2>Ma page de contact</h2>"
 
-@app.route('/histogramme/')
+@app.route('/tawarano2/')
 def histogramme():
     response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
     raw_content = response.read()
